@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Document {
+  id Int @id @unique @default(autoincrement())
+
+  title            String       
+  flashcard_set    FlashcardSet @relation(fields: [flashcard_set_id], references: [id], onDelete: Cascade)
+  flashcard_set_id Int @unique
+
+  storage_url String @unique
+  storage_key String @unique
+
+  file_name String
+  file_size Int
+
+  user_id     String
+
+  content String @db.LongText
+
+  updated_at DateTime @default(now()) @updatedAt
+  created_at DateTime @default(now())
+
+  @@index([flashcard_set_id])
+}
+
+model FlashcardSet {
+  id         Int         @id @unique @default(autoincrement())
+  document   Document?
+  flashcards Flashcard[]
+}
+
+model Flashcard {
+  id               Int          @id @unique @default(autoincrement())
+  flashcard_set    FlashcardSet @relation(fields: [flashcard_set_id], references: [id])
+  flashcard_set_id Int
+
+  term       String
+  defenition String
+
+  @@index([flashcard_set_id])
+}
