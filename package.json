@@ -18,6 +18,5 @@
   "packageManager": "npm@8.18.0",
   "workspaces": [
     "apps/*"
-
   ]
 }
