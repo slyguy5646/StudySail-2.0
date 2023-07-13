@@ -2,9 +2,10 @@ import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { getAuth } from "@clerk/nextjs/server";
 import { UploadedFile } from "@/types/types";
 import { prisma } from "@/db";
+import { utapi } from "uploadthing/server";
+import { parseBaseRequest } from "@/utils/ParseBaseRequest";
 
 const f = createUploadthing();
-
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
@@ -14,19 +15,18 @@ export const ourFileRouter = {
     .middleware(async ({ req }) => {
       // This code runs on your server before upload
       const auth = getAuth(req);
-
+      const token = await auth.getToken();
       // If you throw, the user will not be able to upload
-      if (!auth.userId) throw new Error("Unauthorized");
-
+      if (!auth.userId || !token) throw new Error("Unauthorized");
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { auth };
+      return { auth, token };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       console.log("Upload complete for userId:", metadata.auth.userId);
 
       console.log("file url", file.url);
-      createNewDocument(metadata.auth.userId, file);
+      createNewDocument(metadata.auth.userId, file, metadata.token);
     }),
   // premiumUploader: f({ image: { maxFileSize: "128MB" } })
   //   // Set permissions and file types for this FileRoute
@@ -60,8 +60,15 @@ export const ourFileRouter = {
 
 export type OurFileRouter = typeof ourFileRouter;
 
-async function createNewDocument(userid: string, file: UploadedFile) {
+async function createNewDocument(userid: string, file: UploadedFile, token: string) {
+  const content = await parseBaseRequest<{ text: string }>("/parse-pdf", token, {
+    method: "POST",
+    body: JSON.stringify({
+      file_key: file.key,
+    }),
+  });
 
+  if (!content?.text) return;
 
   await prisma.document.create({
     data: {
@@ -72,9 +79,9 @@ async function createNewDocument(userid: string, file: UploadedFile) {
       file_size: file.size,
       user_id: userid,
       flashcard_set: {
-        create: {}
+        create: {},
       },
-      content: ""
+      content: content.text,
     },
   });
 }

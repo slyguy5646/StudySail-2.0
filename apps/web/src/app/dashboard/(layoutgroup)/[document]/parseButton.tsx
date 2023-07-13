@@ -1,21 +1,37 @@
 "use client";
 import { useState } from "react";
+import { parseBaseRequest } from "@/utils/ParseBaseRequest";
+import { useAuth } from "@clerk/nextjs";
 
-export default function ParseReqButton({ url }: { url: string }) {
+export default function ParseReqButton({ file_key }: { file_key: string }) {
+  const { getToken, userId } = useAuth();
+
   const [content, setContext] = useState("");
   return (
-    <div>
-      <div>{content}</div>
-      <button
-        onClick={async () => {
-          const res = await fetch("/api/parse", {
-            method: "POST",
-            body: JSON.stringify({ file_url: url }),
-          });
+    <>
+      {userId ? (
+        <div>
+          <div>{content}</div>
+          <button
+            onClick={async () => {
+              console.log(file_key);
+              const res = await parseBaseRequest<{ text: string }>("/parse-pdf", await getToken(), {
+                method: "POST",
+                body: JSON.stringify({
+                  file_key: file_key,
+                }),
+              });
 
-
-        }}
-      >Click to parse</button>
-    </div>
+              console.log(res);
+              setContext(res?.text ?? "")
+            }}
+          >
+            Click to parse
+          </button>
+        </div>
+      ) : (
+        <div></div>
+      )}
+    </>
   );
 }

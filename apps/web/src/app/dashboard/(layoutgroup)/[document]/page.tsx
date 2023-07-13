@@ -31,6 +31,8 @@ export default async function DocumentPage({
 
   // Join the words back into a string
   var result = words.join(" ");
+
+  console.log(doc.storage_key)
   return (
     <div>
       <div className="text-5xl font-bold text-black capitalize">{result}</div>
@@ -46,7 +48,7 @@ export default async function DocumentPage({
           </div>
         </Chip>
       )}
-      <ParseReqButton url={doc.storage_url}/>
+      <ParseReqButton file_key={doc.storage_key}/>
     </div>
   );
 }

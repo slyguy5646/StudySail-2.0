@@ -1,3 +1,5 @@
+import "dotenv/config"; // To read CLERK_API_KEY
+
 import express from "express";
 import { parsePdfTextFromUrl } from "./utils/ParsePDFTextFromURL";
 import {
@@ -10,9 +12,10 @@ import {
   StrictAuthProp,
 } from "@clerk/clerk-sdk-node";
 
-import { parseRequestSchema } from "@study-sail/types";
+import { parseRequestSchema } from "./schemas";
 
 import type { RequireAuthProp, WebhookEvent } from "@clerk/clerk-sdk-node";
+
 import { createServer } from "./server";
 
 declare global {
@@ -22,22 +25,20 @@ declare global {
 }
 
 export const app = createServer();
-const port = 3000;
-
-app.get("/parse-pdf", ClerkExpressRequireAuth({}), async (req, res) => {
+const port = 3001;
+//ClerkExpressRequireAuth({}),
+app.post("/parse-pdf", async (req, res) => {
   const validation = parseRequestSchema.safeParse(req.body);
 
-  if (!validation.success)
-    return res.status(429).json({ error: "Invalid body format" });
-  res.status(200).json({ hello: "message world" });
+  if (!validation.success) return res.status(429).json({ error: "Invalid body format" });
+  const { file_key } = validation.data;
+  console.log(req.body);
+  console.log(`https://utfs.io/f/${file_key}`);
+  const text = await parsePdfTextFromUrl(`https://utfs.io/f/${file_key}`);
+  console.log("TEXT", text);
+  res.status(200).json({ text });
 });
 
 app.listen(port, async () => {
-  //   console.log(
-  //     "CONSOLE LOG FILE",
-  //     await parsePdfTextFromUrl(
-  //       "https://utfs.io/f/6fe4a614-d7a9-42ec-9f05-357999d5cdd6_10.04%20Trigonometric%20Functions%20with%20Periodic%20Phenomena.pdf"
-  //     )
-  //   );
   return console.log(`Express is listening at http://localhost:${port}`);
 });

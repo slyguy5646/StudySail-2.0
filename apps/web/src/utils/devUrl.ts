@@ -1,0 +1,1 @@
+export const PARSE_URL = "http://localhost:3001";

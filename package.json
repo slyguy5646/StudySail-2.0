@@ -11,12 +11,13 @@
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "dotenv-cli": "^7.2.1"
   },
   "name": "StudySail-2.0",
   "packageManager": "npm@8.18.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+
   ]
 }
