@@ -3,7 +3,6 @@ import { prisma } from "@/db";
 import { redirect } from "next/navigation";
 import { parseFileExtension } from "@/utils/GetFileExtension";
 import { IconExternalLink } from "@tabler/icons-react";
-import ParseReqButton from "./parseButton";
 import { shortenFileTitle } from "@/utils/ShortenFileTitle";
 import FlashcardSummaryCard from "@/components/Dashboard/Nav/Flashcards/FlashcardSummaryCard";
 
@@ -35,7 +34,6 @@ export default async function DocumentPage({ params }: { params: { document: str
         </Chip>
       )}
        <FlashcardSummaryCard count={flashcards.length} id={doc.flashcard_set_id}/>
-      <ParseReqButton file_key={doc.storage_key} />
     </div>
   );
 }

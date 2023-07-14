@@ -117,22 +117,9 @@ export default function Home() {
         >
           <div className="">
             <FeaturesSection />
-            <AppDisplay />
-            <Mobile />
+             <AppDisplay />
+            
 
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
-            <div>constnet</div>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
   const cards = await prisma.flashcard.findMany({ where: { flashcard_set_id: doc.flashcard_set.id } });
 
   return (
-    <div>
+    <div className="">
       {cards.length <= 0 && <Chat content={doc.content} set_id={doc.flashcard_set_id} />}
       {cards.length > 0 && (
         <div>
@@ -30,7 +30,7 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
             <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
         <QuizletButton cards={cards}/>
           </div>
-          <div className="flex flex-col gap-y-4">
+          <div className="flex flex-col gap-y-4 pb-4">
             {cards.map((card) => (
               <FlashOverviewCard term={card.term} def={card.definition} />
             ))}

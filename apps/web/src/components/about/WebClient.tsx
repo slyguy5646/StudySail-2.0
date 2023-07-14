@@ -8,8 +8,9 @@ import {
   LinkIcon,
   PuzzlePieceIcon,
   MapPinIcon,
+  FolderIcon
 } from "@heroicons/react/20/solid";
-import { IconBallpen } from "@tabler/icons-react";
+import { IconFolderOpen } from "@tabler/icons-react";
 import clsx from "clsx";
 import React, { useState, useEffect, useContext } from "react";
 import { FontContext } from "@/app/(headerGroup)/page";
@@ -22,29 +23,25 @@ const pointsOfInterest = [
   {
     name: "One place",
     description:
-      " Effortlessly access your educational data, StudySail notes, and tools, all consolidated in one convenient, centralized location.",
+      " Effortlessly access your study material and StudySail content all consolidated in one convenient, centralized location.",
     icon: RectangleStackIcon,
   },
   {
     name: (
       <div className="flex items-center">
-        Dashboard <Chip title={"Coming Soon"} />
+        Organize
+        <Chip title={"Coming Soon"} />
       </div>
     ),
-    description:
-      "Effortlessly manage your academic journey with our dashboard, showcasing new assignments, to-dos, and feedback on a single, user-friendly page.",
-    icon: PaperClipIcon,
+    description: "Effortlessly manage your study material and sort by class or subject",
+    icon: FolderIcon,
   },
-  {
-    name: (
-      <div className="flex items-center">
-        All the platforms <Chip title={"Coming Soon"} />
-      </div>
-    ),
-    description:
-      "Enjoy a consistent learning experience on Windows, macOS, Linux, and web browsers with our seamlessly compatible, cross-platform app.",
-    icon: RectangleGroupIcon,
-  },
+  // {
+  //   name: <div className="flex items-center">All the platforms</div>,
+  //   description:
+  //     "Enjoy a consistent learning experience on Windows, macOS, Linux, and web browsers with our seamlessly compatible, cross-platform app.",
+  //   icon: RectangleGroupIcon,
+  // },
 ];
 
 export default function AppDisplay() {
@@ -58,14 +55,14 @@ export default function AppDisplay() {
             <div className="lg:max-w-lg">
               <h2
                 className={clsx(
-                  "text-base font-semibold leading-7 text-cyan-500",
+                  "text-base font-semibold leading-7 text-cyan-500 decoration-white",
                   heavyFont.className
                 )}
               >
-                Web/Desktop
+                Web
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                A better educational experience.
+                Your study material on steroids
               </p>
               <p
                 className={clsx(
@@ -73,9 +70,7 @@ export default function AppDisplay() {
                   lightFont.className
                 )}
               >
-                Most schools and their tech are stuck in the early 2000's. Coast
-                into the present with the powerful and easy to use tools that
-                StudySail puts at your fingertips.
+                Notes are great but what if you could enhance them? Now you can with StudySail.
               </p>
               <div
                 className={clsx(
