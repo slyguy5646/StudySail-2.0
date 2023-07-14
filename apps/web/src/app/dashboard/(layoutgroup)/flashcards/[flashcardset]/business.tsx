@@ -8,6 +8,7 @@ import { useDash } from "@/components/Dashboard/Nav/DashboardRouterContext";
 import { IconArrowLeft } from "@tabler/icons-react";
 import FlashOverviewCard from "@/components/Dashboard/Nav/Flashcards/FlashOverviewCard";
 import { CreateFlashcardRequest } from "@/app/api/create-flashcard/route";
+import BackButton from "@/components/backButton";
 
 export default function Chat({ content, set_id }: { content: string; set_id: number }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
@@ -39,9 +40,12 @@ export default function Chat({ content, set_id }: { content: string; set_id: num
   }, [isLoading]);
 
   return (
-    <div className="p-12">
+    <div className="">
+      <BackButton>
+        <IconArrowLeft className="text-slate-400 w-6 h-6 hover:text-slate-500 cursor-pointer " />
+      </BackButton>
       <div className="flex justify-between items-center pb-4">
-        <div className="text-5xl font-bold text-black capitalize">Flashcards</div>
+        <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
         <form onSubmit={(e) => handleSubmit(e, { options: { body: { text: content } } })}>
           <button
             onClick={() => handleInputChange({ target: { value: "hello world" } } as any)}

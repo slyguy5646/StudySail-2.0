@@ -34,6 +34,7 @@ function MainOptionsBar({
   currentPage,
   documents,
 }: OptionsBarProps) {
+
   return (
     <aside className="col-span-1 hidden h-[100dvh] border-r border-r-slate-200 pb-12 dark:border-r-neutral-700 md:inline">
       <div className="px-8 py-6">

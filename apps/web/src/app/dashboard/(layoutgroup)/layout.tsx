@@ -13,6 +13,7 @@ export default async function DashLayout({ children }: { children: ReactNode }) 
 
   const documents = await prisma.document.findMany({
     where: { user_id: userId },
+    orderBy: { created_at: "desc" },
   });
   return (
     <div>

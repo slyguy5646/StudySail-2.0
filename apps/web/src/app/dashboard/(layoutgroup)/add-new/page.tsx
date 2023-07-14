@@ -1,5 +1,14 @@
 import BaseDropzone from "@/components/AddNew/BaseDropzone";
 
+
 export default async function AddNew() {
-  return <BaseDropzone />;
+
+  
+  return (
+    <div className="w-full">
+      <div className="text-5xl font-bold text-black py-4">New Document</div>
+
+      <BaseDropzone  />
+    </div>
+  );
 }

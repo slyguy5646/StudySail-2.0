@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { IconTrash } from "@tabler/icons-react";
 import {
@@ -13,14 +13,18 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
+import { useDash } from "../DashboardRouterContext";
 
 export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: number; docTitle: string }) {
   const [open, setOpen] = useState<boolean>(false);
+  const { router } = useDash();
 
-  async function deleteDoc(){
-    await fetch("/api/delete-doc", {method: "POST", body: JSON.stringify({id: docId})})
+  async function deleteDoc() {
+    const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) });
+    router.refresh();
+    router.push("/dashboard");
   }
-    return (
+  return (
     <>
       <AlertDialog open={open} onOpenChange={setOpen}>
         <AlertDialogTrigger>
@@ -30,12 +34,15 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
           <AlertDialogHeader>
             <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete <span className="text-cyan-500 font-semibold">{docTitle}</span>.
+              This action cannot be undone. This will permanently delete{" "}
+              <span className="text-cyan-500 font-semibold">{docTitle}</span>.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Nope</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteDoc()} className="bg-red-500 hover:bg-red-600">Yup</AlertDialogAction>
+            <AlertDialogAction onClick={() => deleteDoc()} className="bg-red-500 hover:bg-red-600">
+              Yup
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

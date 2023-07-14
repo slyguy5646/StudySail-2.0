@@ -4,6 +4,7 @@ import { UploadedFile } from "@/types/types";
 import { prisma } from "@/db";
 import { utapi } from "uploadthing/server";
 import { parseBaseRequest } from "@/utils/ParseBaseRequest";
+import { NextResponse } from "next/server";
 
 const f = createUploadthing();
 
@@ -70,7 +71,7 @@ async function createNewDocument(userid: string, file: UploadedFile, token: stri
 
   if (!content?.text) return;
 
-  await prisma.document.create({
+  const doc = await prisma.document.create({
     data: {
       title: file.name,
       storage_url: file.url,

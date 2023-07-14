@@ -113,7 +113,7 @@ export async function POST(req: Request) {
       {
         name: "get_terms_and_definitions",
         description:
-          "convert inputted text to as many terms/questions and defintions/answers as you can without being repetitive. If a given term and definition pair seems to trivial, exclude it.  if a given term doesn't have a definition don't return it",
+          "convert inputted text to as many terms/questions and defintions/answers as you can without being repetitive. If a given term and definition pair seems to trivial, exclude it. If it appears as though the definition is incorrect, correct it. if a given term doesn't have a definition don't return it",
         parameters: {
           type: "object",
           properties: {
