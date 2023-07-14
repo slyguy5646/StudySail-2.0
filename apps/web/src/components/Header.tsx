@@ -24,6 +24,7 @@ function Header() {
   const navigation = [
     { name: "About", id: "about" },
     { name: "Flashcards", id: "flashcards" },
+    { name: "Pricing", id: "pricing" },
     // { name: "Mobile", id: "#" },
     // { name: "Roadmap", id: "/roadmap" },
   ];

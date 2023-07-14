@@ -3,13 +3,7 @@ import { Poppins } from "@next/font/google";
 import styles from "./page.module.css";
 import clsx from "clsx";
 import Header from "@/components/Header";
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useContext, createContext, useRef } from "react";
 
 import AppDisplay from "@/components/about/WebClient";
 import Mobile from "@/components/about/Mobile";
@@ -17,9 +11,11 @@ import FeaturesSection from "@/components/about/Features";
 import { IconArrowDown } from "@tabler/icons-react";
 import { TypeAnimation } from "react-type-animation";
 import { useUser } from "@clerk/nextjs";
-
+import Pricing from "@/components/about/Pricing";
 const poppins = Poppins({ weight: "800", subsets: ["latin"] });
 const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
+
+
 
 export const FontContext = createContext({
   heavyFont: poppins,
@@ -27,7 +23,7 @@ export const FontContext = createContext({
 });
 
 export default function Home() {
-  const {isSignedIn} = useUser();
+  const { isSignedIn } = useUser();
   return (
     <FontContext.Provider
       value={{
@@ -51,8 +47,7 @@ export default function Home() {
                             href="#"
                             className="flex-none rounded-full bg-gray-900 py-1 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                           >
-                            Our all new AI Quizlet Integration is out!{" "}
-                            <span aria-hidden="true">&rarr;</span>
+                            Our all new AI Quizlet Integration is out! <span aria-hidden="true">&rarr;</span>
                           </a>
                         </div>
                       </div>
@@ -64,12 +59,9 @@ export default function Home() {
                       >
                         <span className="text-white ">
                           {/* <span className=" underline decoration-cyan-500"> */}
-                            Your study material with{" "}
-                          {/* </span>{" "} */}
+                          Your study material with {/* </span>{" "} */}
                           {/* tools for the{" "} */}
-                          <span className=" text-cyan-500 selection:text-white">
-                            super powers
-                          </span>
+                          <span className=" text-cyan-500 selection:text-white">super powers</span>
                         </span>
                       </h1>
                     </div>
@@ -80,7 +72,7 @@ export default function Home() {
                           href={isSignedIn ? "/dashboard" : "/sign-up"}
                           className="rounded-md  bg-cyan-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-300 delay-75 ease-in-out hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                         >
-                          {isSignedIn ? "Dashboard": "Get started"}
+                          {isSignedIn ? "Dashboard" : "Get started"}
                         </a>
                         <button
                           // href="#"
@@ -110,16 +102,12 @@ export default function Home() {
           </div>
         </div>
         <div
-          className={clsx(
-            "below_content bg-black bg-opacity-90 pt-12 text-xl font-bold text-black",
-            poppins.className
-          )}
+          className={clsx("below_content bg-black bg-opacity-90 pt-12 text-xl font-bold text-black", poppins.className)}
         >
           <div className="">
             <FeaturesSection />
-             <AppDisplay />
-            
-
+            <AppDisplay />
+            <Pricing />
           </div>
         </div>
       </div>
