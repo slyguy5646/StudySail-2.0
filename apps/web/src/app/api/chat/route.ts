@@ -1,7 +1,6 @@
 // // import { NextResponse } from "next/server";
 // // import z from "zod";
 
-
 // // export async function POST(req: Request) {
 // //   const schema = z.object({
 // //     text: z.string(),
@@ -69,10 +68,11 @@ import { Configuration, OpenAIApi } from "openai-edge";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import z from "zod";
 import { NextResponse } from "next/server";
+import { env } from "@/env";
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(config);
 
@@ -82,12 +82,12 @@ export const runtime = "edge";
 export async function POST(req: Request) {
   const data = await req.json();
 
-  // console.log(data);
-  // const schema = z.object({
-  //   text: z.string(),
-  // });
-  // const validation = schema.safeParse(data);
-  // if (!validation.success) return new NextResponse();
+  console.log("I GOT HIT");
+  const schema = z.object({
+    text: z.string(),
+  });
+  const validation = schema.safeParse(data);
+  if (!validation.success) return new NextResponse();
 
   // console.log(validation.data.text);
   // Ask OpenAI for a streaming chat completion given the prompt
@@ -97,14 +97,14 @@ export async function POST(req: Request) {
     messages: [
       {
         role: "user",
-        content: data.text,
+        content: validation.data.text,
       },
       {
         role: "assistant",
         content: "",
         function_call: {
           name: "get_terms_and_definitions",
-          arguments: `{ "text": ${data.text}}`,
+          arguments: `{ "text": ${validation.data.text}}`,
         },
       },
     ],
@@ -112,9 +112,9 @@ export async function POST(req: Request) {
     functions: [
       {
         name: "get_terms_and_definitions",
-        description: "convert inputted text to terms and defintions if a given term doesn't have a definition don't return it",
+        description:
+          "convert inputted text to terms and defintions if a given term doesn't have a definition don't return it",
         parameters: {
-          
           type: "object",
           properties: {
             text: {
@@ -177,40 +177,10 @@ export async function POST(req: Request) {
 //   return new StreamingTextResponse(stream);
 // }
 
-
-const text = `el aeropuerto airport
-el vuelo flight
-el pasaporte passport
-el avión plane
-la maleta suitcase
-el boleto ticket
-el equipaje luggage
-el recuerdo
-souvenir (as well as
-"memory")
-En la playa
-At the Beach
-el traje de baño swimsuit
-el océano ocean
-la isla island
-la ola wave
-la arena sand
-la piscina pool
-la puesta del sol sunset
-el bloqueador sunscreen
-Set 3
-nadar to swim
-bucear to dive
-hacer surf to surf
-el lago lake
-la toalla towel
-la sombrilla umbrella
-la concha shell
-sacar fotos to take pictures
-Set 4
-viajar to travel
-ir de vacaciones to go on vacation
-salir to depart or leave
-disfrutar to enjoy
-estar de viaje to be on a trip
-encontrar to find`
+const text = `el aeropuerto airport`;
+// el vuelo flight
+// el pasaporte passport
+// el avión plane
+// la maleta suitcase
+// el boleto ticket
+// el equipaje luggage

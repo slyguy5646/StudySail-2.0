@@ -4,3 +4,7 @@ export interface UploadedFile {
   url: string;
   size: number;
 };
+
+export type NoNullFields<Ob> = {
+  [K in keyof Ob]: Ob[K] extends object ? NoNullFields<Ob[K]> : NonNullable<Ob[K]>;
+};

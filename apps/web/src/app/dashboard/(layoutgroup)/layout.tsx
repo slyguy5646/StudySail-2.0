@@ -4,13 +4,10 @@ import "../../dash.css";
 import { prisma } from "@/db";
 import { auth, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import DashboardRouterProvider from "@/components/Dashboard/Nav/DashboardRouterContext";
 
-export default async function DashLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const {userId} = auth();
+export default async function DashLayout({ children }: { children: ReactNode }) {
+  const { userId } = auth();
 
   if (!userId) redirect("/");
 
@@ -19,7 +16,9 @@ export default async function DashLayout({
   });
   return (
     <div>
-      <Navbar documents={documents}>{children}</Navbar>
+      <DashboardRouterProvider>
+        <Navbar documents={documents}>{children}</Navbar>
+      </DashboardRouterProvider>
     </div>
   );
 }

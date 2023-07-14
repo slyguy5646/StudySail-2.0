@@ -57,9 +57,8 @@ export default function Main({
   useEffect(() => {
     if (pathname != null) {
       let name = pathname.split("/");
-      name.shift();
-      name.shift();
-      setCurrenPage(name.join("/"));
+      
+      setCurrenPage(name.pop() ?? "");
     }
   }, [pathname]);
 

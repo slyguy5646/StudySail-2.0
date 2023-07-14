@@ -46,7 +46,7 @@ model Flashcard {
   flashcard_set_id Int
 
   term       String
-  defenition String
+  definition String
 
   @@index([flashcard_set_id])
 }

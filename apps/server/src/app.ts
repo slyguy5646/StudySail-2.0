@@ -30,7 +30,7 @@ const port = 3001;
 app.post("/parse-pdf", async (req, res) => {
   const validation = parseRequestSchema.safeParse(req.body);
 
-  if (!validation.success) return res.status(429).json({ error: "Invalid body format" });
+  if (!validation.success) return res.status(422).json({ error: "Invalid body format" });
   const { file_key } = validation.data;
   console.log(req.body);
   console.log(`https://utfs.io/f/${file_key}`);

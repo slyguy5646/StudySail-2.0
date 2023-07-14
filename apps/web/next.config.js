@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {appDir: true},
-  webpack: (config) => {
-    config.externals = [...config.externals, "canvas"];
-    return config;
+  experimental: { appDir: true },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.quizlet.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

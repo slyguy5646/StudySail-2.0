@@ -5,6 +5,7 @@ import { parseFileExtension } from "@/utils/GetFileExtension";
 import { IconExternalLink } from "@tabler/icons-react";
 import ParseReqButton from "./parseButton";
 import { shortenFileTitle } from "@/utils/ShortenFileTitle";
+import FlashcardSummaryCard from "@/components/Dashboard/Nav/Flashcards/FlashcardSummaryCard";
 
 export default async function DocumentPage({ params }: { params: { document: string } }) {
   const doc = await prisma.document.findUnique({
@@ -23,7 +24,6 @@ export default async function DocumentPage({ params }: { params: { document: str
   return (
     <div>
       <div className="text-5xl font-bold text-black capitalize">{name}</div>
-      <div className="text-5xl font-bold text-black capitalize">{JSON.stringify(doc.flashcard_set)}</div>
       {fileType && (
         <Chip className="m-0 ml-0 text-slate-600 uppercase w-fit px-4 my-4 ">
           <div className="flex justify-between items-center gap-x-2">
@@ -34,7 +34,7 @@ export default async function DocumentPage({ params }: { params: { document: str
           </div>
         </Chip>
       )}
-      {flashcards.length > 0 && <div>FLASHCARD COMPONENT HERE</div>}
+       <FlashcardSummaryCard count={flashcards.length} id={doc.flashcard_set_id}/>
       <ParseReqButton file_key={doc.storage_key} />
     </div>
   );
