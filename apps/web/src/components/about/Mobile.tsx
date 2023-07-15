@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState, useEffect, useContext } from "react";
-import { FontContext } from "@/app/(headerGroup)/page";
 import clsx from "clsx";
 import {
   PuzzlePieceIcon,
@@ -10,7 +9,9 @@ import {
 import Chip from "../chip";
 import Image from "next/image";
 import cover from "../../../public/mobilecover.png";
-// import "react-device-frameset/styles/marvel-devices.min.css";
+import { Poppins } from "@next/font/google";
+const poppins = Poppins({ weight: "800", subsets: ["latin"] });
+const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
 
 const pointsOfInterest = [
   {
@@ -38,7 +39,6 @@ const pointsOfInterest = [
 ];
 
 export default function Mobile() {
-  const { heavyFont, lightFont } = useContext(FontContext);
 
   return (
     <div className="overflow-hidden bg-black  py-24 sm:py-32">
@@ -62,7 +62,7 @@ export default function Mobile() {
               <h2
                 className={clsx(
                   "text-base font-semibold leading-7 text-cyan-500",
-                  heavyFont.className
+                  poppins.className
                 )}
               >
                 Mobile
@@ -73,7 +73,7 @@ export default function Mobile() {
               <p
                 className={clsx(
                   "mt-6 text-lg leading-8 text-neutral-500",
-                  lightFont.className
+                  poppinsLight.className
                 )}
               >
                 Get assignment information, feedback, and more all while on the
@@ -82,7 +82,7 @@ export default function Mobile() {
               <div
                 className={clsx(
                   "mt-10 max-w-xl space-y-8 text-base leading-7 text-white lg:max-w-none",
-                  lightFont.className
+                  poppinsLight.className
                 )}
               >
                 {pointsOfInterest.map((poi) => (

@@ -13,11 +13,14 @@ import {
 import { IconFolderOpen } from "@tabler/icons-react";
 import clsx from "clsx";
 import React, { useState, useEffect, useContext } from "react";
-import { FontContext } from "@/app/(headerGroup)/page";
 import Chip from "../chip";
 import Image from "next/image";
 import cover from "../../../public/examplecover.png";
 import { RectangleStackIcon } from "@heroicons/react/24/solid";
+import { Poppins } from "@next/font/google";
+const poppins = Poppins({ weight: "800", subsets: ["latin"] });
+const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
+
 
 const pointsOfInterest = [
   {
@@ -45,7 +48,6 @@ const pointsOfInterest = [
 ];
 
 export default function AppDisplay() {
-  const { heavyFont, lightFont } = useContext(FontContext);
 
   return (
     <div className="overflow-hidden bg-black  py-24 sm:py-32" id="flashcards">
@@ -56,7 +58,7 @@ export default function AppDisplay() {
               <h2
                 className={clsx(
                   "text-base font-semibold leading-7 text-cyan-500 decoration-white",
-                  heavyFont.className
+                  poppins.className
                 )}
               >
                 Web
@@ -67,7 +69,7 @@ export default function AppDisplay() {
               <p
                 className={clsx(
                   "mt-6 text-md leading-8 text-neutral-500",
-                  lightFont.className
+                  poppinsLight.className
                 )}
               >
                 Notes are great but what if you could enhance them? Now you can with StudySail.
@@ -75,7 +77,7 @@ export default function AppDisplay() {
               <div
                 className={clsx(
                   "mt-10 max-w-xl space-y-8 text-base leading-7 text-white lg:max-w-none",
-                  lightFont.className
+                  poppinsLight.className
                 )}
               >
                 {pointsOfInterest.map((poi) => (

@@ -3,12 +3,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/db";
 import { auth } from "@clerk/nextjs";
 import { utapi } from "uploadthing/server";
+import { deleteDocRequestSchema } from "@/types/schemas";
 
-export const deleteDocRequestSchema = z.object({
-  id: z.number(),
-});
-
-export type DeleteDocRequest = z.infer<typeof deleteDocRequestSchema>;
 
 export async function POST(req: Request) {
   const { userId } = auth();

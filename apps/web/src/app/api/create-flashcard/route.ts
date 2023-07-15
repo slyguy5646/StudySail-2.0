@@ -3,18 +3,8 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 import { prisma } from "@/db";
 import { Flashcard } from "@prisma/client";
+import { createFlashcardRequestSchema, CreateFlashcardRequest } from "@/types/schemas";
 
-export const createFlashcardRequestSchema = z.object({
-  cards: z
-    .object({
-      term: z.string(),
-      definition: z.string(),
-      set_id: z.number(),
-    })
-    .array(),
-});
-
-export type CreateFlashcardRequest = z.infer<typeof createFlashcardRequestSchema>;
 
 export async function POST(req: Request) {
   const { userId } = auth();

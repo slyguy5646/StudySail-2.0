@@ -6,8 +6,8 @@ import { PartialParse } from "@/utils/partial-parse";
 import { PlainLoadingSpinnerWhite } from "@/components/LoadingSpinner";
 import { useDash } from "@/components/Dashboard/Nav/DashboardRouterContext";
 import { IconArrowLeft } from "@tabler/icons-react";
-import FlashOverviewCard from "@/components/Dashboard/Nav/Flashcards/FlashOverviewCard";
-import { CreateFlashcardRequest } from "@/app/api/create-flashcard/route";
+import FlashOverviewCard from "@/components/Dashboard/Flashcards/FlashOverviewCard";
+import { CreateFlashcardRequest } from "@/types/schemas";
 import BackButton from "@/components/backButton";
 
 export default function Chat({ content, set_id }: { content: string; set_id: number }) {
@@ -31,7 +31,7 @@ export default function Chat({ content, set_id }: { content: string; set_id: num
         cards: [...parsedResponse.map((card) => ({ set_id, term: card.term, definition: card.definition }))],
       };
       await fetch("/api/create-flashcard", { method: "POST", body: JSON.stringify(data) });
-      router.refresh()
+      router.refresh();
     }
   }
 

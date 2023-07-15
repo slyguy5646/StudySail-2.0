@@ -1,11 +1,11 @@
 import { prisma } from "@/db";
 import Chat from "./business";
 import { redirect } from "next/navigation";
-import FlashOverviewCard from "@/components/Dashboard/Nav/Flashcards/FlashOverviewCard";
+import FlashOverviewCard from "@/components/Dashboard/Flashcards/FlashOverviewCard";
 import { IconArrowLeft } from "@tabler/icons-react";
 import BackButton from "@/components/backButton";
 import Image from "next/image";
-import QuizletButton from "@/components/Dashboard/Nav/Flashcards/QuizletButton";
+import QuizletButton from "@/components/Dashboard/Flashcards/QuizletButton";
 
 export default async function Flashcards({ params }: { params: { flashcardset: string } }) {
   const doc = await prisma.document.findUnique({

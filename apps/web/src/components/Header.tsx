@@ -2,23 +2,24 @@
 // import React, { useState, useEffect } from 'react';
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
-import { Poppins } from "@next/font/google";
-const poppins = Poppins({ weight: "800", subsets: ["latin"] });
+
 
 import { IconSailboat } from "@tabler/icons-react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useState, useEffect, useContext } from "react";
-import { FontContext } from "@/app/(headerGroup)/page";
 import Banner from "./banner";
 import { useRouter } from "next/navigation";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import NavAvatar from "./NavAvatar";
+import { Poppins } from "@next/font/google";
+const poppins = Poppins({ weight: "800", subsets: ["latin"] });
+const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
+
 
 
 function Header() {
-  const { lightFont, heavyFont } = useContext(FontContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isSignedIn, user } = useUser();
   const navigation = [
@@ -76,7 +77,7 @@ function Header() {
                 }}
                 className={clsx(
                   "group text-white transition-all duration-300 ease-in-out",
-                  lightFont.className
+                  poppinsLight.className
                 )}
               >
                 <span className="bg-gradient-to-r from-cyan-500 to-cyan-500 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]">

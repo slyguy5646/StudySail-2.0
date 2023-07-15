@@ -17,20 +17,12 @@ const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
 
 
 
-export const FontContext = createContext({
-  heavyFont: poppins,
-  lightFont: poppinsLight,
-});
+
 
 export default function Home() {
   const { isSignedIn } = useUser();
   return (
-    <FontContext.Provider
-      value={{
-        heavyFont: poppins,
-        lightFont: poppinsLight,
-      }}
-    >
+
       <div className="selection:bg-cyan-500">
         {/* <Header /> */}
 
@@ -111,7 +103,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </FontContext.Provider>
   );
 }
 // {thing /***/ && (

@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useState, useEffect, useContext } from "react";
-import { FontContext } from "@/app/(headerGroup)/page";
 import { SparklesIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import Chip from "../chip";
 import clsx from "clsx";
 import { IconSparkles } from "@tabler/icons-react";
+import { Poppins } from "@next/font/google";
+const poppins = Poppins({ weight: "800", subsets: ["latin"] });
+const poppinsLight = Poppins({ weight: "500", subsets: ["latin"] });
+
 
 function LearnMore({ href }: { href: string }) {
   return (
@@ -47,7 +50,6 @@ const features = [
 ];
 
 function FeaturesSection() {
-  const { heavyFont, lightFont } = useContext(FontContext);
 
   return (
     <div className="bg-none py-24 sm:py-32" id="about">
@@ -62,7 +64,7 @@ function FeaturesSection() {
           <p
             className={clsx(
               "mt-6 text-md leading-8 text-neutral-500",
-              lightFont.className
+              poppinsLight.className
             )}
           >
             StudySail allows you to be the best version of your educational self
@@ -89,7 +91,7 @@ function FeaturesSection() {
                 <div
                   className={clsx(
                     "mt-6 text-[17px] leading-8 text-neutral-500",
-                    lightFont.className
+                    poppinsLight.className
                   )}
                 >
                   {feature.description}
