@@ -4,21 +4,29 @@ import Image from "next/image";
 import { Flashcard } from "@prisma/client";
 import { useState, useEffect } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function QuizletButton({ cards }: { cards: Flashcard[] }) {
   const [formatted, setFormatted] = useState<string | null>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     setFormatted(cards.map((card) => `${card.term}    ${card.definition}`).join("\n"));
   }, [cards]);
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={150}>
       <Tooltip>
         <TooltipTrigger>
           <div
             onClick={() => {
-              if (formatted) navigator.clipboard.writeText(formatted);
+              if (formatted) {
+                navigator.clipboard.writeText(formatted);
+                toast({
+                  title: "Copied Quizlet Format!",
+                  description: "You just copied a quizlet compatible format from these flashcards. Read the docs for more info",
+                });
+              }
             }}
           >
             <Image

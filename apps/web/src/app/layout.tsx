@@ -3,6 +3,8 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/toaster";
+
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -18,6 +20,7 @@ export default function RootLayout({
     <ClerkProvider appearance={{ variables: { colorPrimary: "#06b6d4" } }}>
       <html lang="en">
         <body>{children}</body>
+        <Toaster />
       </html>
     </ClerkProvider>
   );

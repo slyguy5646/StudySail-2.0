@@ -1,6 +1,7 @@
 "use client";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDash } from "../DashboardRouterContext";
+import { IconArrowRight } from "@tabler/icons-react";
 
 export default function FlashcardSummaryCard({ count, id }: { count: number, id: number }) {
   const { router, currentRoute } = useDash();
@@ -17,9 +18,10 @@ export default function FlashcardSummaryCard({ count, id }: { count: number, id:
             {" "}
             <button
               onClick={() => router.push(`/dashboard/flashcards/${id}`)}
-              className="rounded-md  bg-cyan-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-300 delay-75 ease-in-out hover:bg-black  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="rounded-md  bg-cyan-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition duration-300 delay-75 ease-in-out hover:bg-black  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              Go to Flashcards
+              <IconArrowRight className="text-white w-6 h-6"/>
+              {/* Go to Flashcards */}
             </button>
           </div>
         </div>
