@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useDash } from "../DashboardRouterContext";
+import { useDash } from "../Nav/DashboardRouterContext";
 import { IconArrowRight } from "@tabler/icons-react";
 
 export default function FlashcardSummaryCard({ count, id }: { count: number, id: number }) {

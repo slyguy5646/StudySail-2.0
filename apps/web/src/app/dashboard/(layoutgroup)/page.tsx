@@ -1,3 +1,4 @@
+import RefreshRouter from "@/components/Dashboard/Nav/RefreshRouter";
 import { prisma } from "@/db";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
@@ -8,9 +9,13 @@ export default async function Done() {
 
   if (docs.length > 0) {
     redirect(`/dashboard/${docs[0].id}`);
-  }else {
-    redirect("/dashboard/add-new")
+  } else {
+    redirect("/dashboard/add-new");
   }
 
-  return <></>;
+  return (
+    <>
+      <RefreshRouter />
+    </>
+  );
 }

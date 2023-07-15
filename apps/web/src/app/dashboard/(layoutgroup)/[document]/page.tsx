@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import { parseFileExtension } from "@/utils/GetFileExtension";
 import { IconExternalLink, IconTrash } from "@tabler/icons-react";
 import { shortenFileTitle } from "@/utils/ShortenFileTitle";
-import FlashcardSummaryCard from "@/components/Dashboard/Nav/Flashcards/FlashcardSummaryCard";
-import DeleteDocButtonAndAlert from "@/components/Dashboard/Nav/Documents/DeleteDocButtonAndAlert";
+import FlashcardSummaryCard from "@/components/Dashboard/Flashcards/FlashcardSummaryCard";
+import DeleteDocButtonAndAlert from "@/components/Dashboard/Documents/DeleteDocButtonAndAlert";
 
 export default async function DocumentPage({ params }: { params: { document: string } }) {
   const doc = await prisma.document.findUnique({
@@ -38,7 +38,7 @@ export default async function DocumentPage({ params }: { params: { document: str
             </Chip>
           )}
         </div>
-        <DeleteDocButtonAndAlert docId={doc.id} docTitle={name}/>
+        <DeleteDocButtonAndAlert docId={doc.id} docTitle={name} />
       </div>
       <FlashcardSummaryCard count={flashcards.length} id={doc.flashcard_set_id} />
     </div>

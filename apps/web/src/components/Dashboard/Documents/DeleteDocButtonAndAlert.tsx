@@ -13,7 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
-import { useDash } from "../DashboardRouterContext";
+import { useDash } from "../Nav/DashboardRouterContext";
 
 export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: number; docTitle: string }) {
   const [open, setOpen] = useState<boolean>(false);

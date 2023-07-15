@@ -15,7 +15,6 @@ export default async function BaseDropzone() {
         onClientUploadComplete={(res) => {
           // Do something with the response
           console.log("Files: ", res);
-          router.refresh();
           router.push("/dashboard")
         }}
         onUploadError={(error: Error) => {
