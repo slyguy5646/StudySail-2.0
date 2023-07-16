@@ -6,7 +6,7 @@
     "dev": "dotenv -e ../../.env next dev",
     "db:push": "dotenv -e ../../.env prisma db push",
     "db:gen": "dotenv -e ../../.env prisma generate",
-    "build": "dotenv -e ../../.env next build",
+    "build": "npm run db:gen && dotenv -e ../../.env  next build",
     "start": "dotenv -e ../../.env next start",
     "lint": "dotenv -e ../../.env next lint"
   },
