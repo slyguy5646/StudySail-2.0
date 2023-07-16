@@ -25,11 +25,11 @@ const pricingTiers: PricingTier[] = [
     features: [
       { title: "3 Stored Documents", available: true },
       { title: "AI Generated Flashcards", available: true },
-      { title: "Audio Transcription", available: false },
+      // { title: "Audio Transcription", available: false },
     ],
   },
-  { title: "First Mate", price: "4.99/mo", available: false, features: [] },
-  { title: "Captain", price: "9.99/mo", available: false, features: [] },
+  // { title: "First Mate", price: "4.99/mo", available: false, features: [] },
+  // { title: "Captain", price: "9.99/mo", available: false, features: [] },
 ];
 
 export default function Pricing() {
