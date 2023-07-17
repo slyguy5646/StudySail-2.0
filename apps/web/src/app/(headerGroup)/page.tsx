@@ -1,7 +1,7 @@
 "use client";
 import { Poppins } from "@next/font/google";
 import clsx from "clsx";
-import "../globals.scss"
+// import "../globals.scss"
 import Header from "@/components/Header";
 import React, { useState, useEffect, useContext, createContext, useRef } from "react";
 
@@ -27,7 +27,7 @@ export default function Home() {
         {/* <Header /> */}
 
         <div className="wrapper ">
-          <div className="">
+          <div className={"h-[100dvh]"}>
             <div className="outer min-h-[500px] absolute   left-0 table h-1/2 w-full -mt-2 ">
               <div className="middle table-cell align-middle">
                 <div className="inner">
@@ -86,12 +86,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <div className=" invisible">Extra Infomation </div> */}
-          {/* <div className="ocean h-[3rem] bg-black sm:h-[5rem] overflow-x-hidden">
+          <div className=" invisible">Extra Infomation </div>
+           <div className="ocean h-[3rem] bg-black sm:h-[5rem] overflow-x-hidden">
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
-          </div> */}
+          </div>
         </div>
         <div
           className={clsx("below_content bg-black bg-opacity-90 pt-12 text-xl font-bold text-black", poppins.className)}

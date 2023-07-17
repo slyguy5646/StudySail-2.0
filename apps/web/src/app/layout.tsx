@@ -1,7 +1,8 @@
 
 import "./globals.css";
 
-import Header from "@/components/Header";
+
+// import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 
