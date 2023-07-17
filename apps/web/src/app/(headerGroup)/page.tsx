@@ -97,9 +97,9 @@ export default function Home() {
           className={clsx("below_content bg-black bg-opacity-90 pt-12 text-xl font-bold text-black", poppins.className)}
         >
           <div className="">
-            <FeaturesSection />
+            {/* <FeaturesSection />
             <AppDisplay />
-            <Pricing />
+            <Pricing /> */}
           </div>
         </div>
       </div>
