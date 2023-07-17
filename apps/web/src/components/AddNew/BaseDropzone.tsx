@@ -8,10 +8,10 @@ import { useDash } from "../Dashboard/Nav/DashboardRouterContext";
 import UploadError from "./UploadErrorAlert";
 import { useState } from "react";
 
-export default async function BaseDropzone() {
+export default function BaseDropzone() {
   const { router } = useDash();
   const [open, setOpen] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>("Error happened")
+  const [errorMessage, setErrorMessage] = useState<string | null>("Error happened");
   return (
     <main className="">
       {/* <UploadError errorMessage={errorMessage} open={open} setOpen={setOpen}/> */}
@@ -19,12 +19,15 @@ export default async function BaseDropzone() {
         endpoint="freeUploader"
         onClientUploadComplete={(res) => {
           // console.log("Files: ", res);
-          router.push("/dashboard")
+          router.push("/dashboard");
         }}
-        onUploadError={(error: Error) => {
+        onUploadError={(error) => {
           // setErrorMessage(error.message);
           // setOpen(true);
-          alert(error.message)
+          console.log("Error: ", error);
+          const fieldErrors = error.data?.zodError?.fieldErrors;
+          alert(`${error.message} ${JSON.stringify(fieldErrors)}`);
+          //
         }}
       />
     </main>
