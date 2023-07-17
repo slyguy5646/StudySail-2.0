@@ -5,8 +5,16 @@ import { prisma } from "@/db";
 import { utapi } from "uploadthing/server";
 import { parseBaseRequest } from "@/utils/ParseBaseRequest";
 import { NextResponse } from "next/server";
+import z from "zod";
 
-const f = createUploadthing();
+const f = createUploadthing({
+  errorFormatter: (err) => {
+    return {
+      message: err.message,
+      zodError: err.cause instanceof z.ZodError ? err.cause.flatten() : null,
+    };
+  },
+});
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
