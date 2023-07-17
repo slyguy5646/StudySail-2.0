@@ -1,7 +1,7 @@
 "use client";
 import { Poppins } from "@next/font/google";
-import styles from "./page.module.css";
 import clsx from "clsx";
+import "../globals.scss"
 import Header from "@/components/Header";
 import React, { useState, useEffect, useContext, createContext, useRef } from "react";
 
