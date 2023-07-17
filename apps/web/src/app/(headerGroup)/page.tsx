@@ -87,11 +87,11 @@ export default function Home() {
             </div>
           </div>
           {/* <div className=" invisible">Extra Infomation </div> */}
-          <div className="ocean h-[3rem] bg-black sm:h-[5rem] overflow-x-hidden">
+          {/* <div className="ocean h-[3rem] bg-black sm:h-[5rem] overflow-x-hidden">
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
             <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
-          </div>
+          </div> */}
         </div>
         <div
           className={clsx("below_content bg-black bg-opacity-90 pt-12 text-xl font-bold text-black", poppins.className)}
