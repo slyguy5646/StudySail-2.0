@@ -1,5 +1,6 @@
 
 import "./globals.css";
+import "./globals.scss";
 
 
 // import Header from "@/components/Header";
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider appearance={{ variables: { colorPrimary: "#06b6d4" } }}>
-      <html lang="en" className="bg-black">
+      <html lang="en" >
         <body>{children}</body>
         <Toaster />
       </html>
