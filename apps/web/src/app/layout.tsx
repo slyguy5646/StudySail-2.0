@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider appearance={{ variables: { colorPrimary: "#06b6d4" } }}>
-      <html lang="en">
+      <html lang="en" className="bg-black">
         <body>{children}</body>
         <Toaster />
       </html>

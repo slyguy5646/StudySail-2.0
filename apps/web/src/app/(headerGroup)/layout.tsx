@@ -1,6 +1,6 @@
 
 import Header from "@/components/Header";
-import "../globals.scss"
+import "../globals.css"
 import "../phone.scss"
 
 export default function NavGroupLayout({

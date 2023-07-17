@@ -28,7 +28,7 @@ export default function Home() {
 
         <div className="wrapper ">
           <div className="">
-            <div className="outer absolute   left-0 table h-1/2 w-full -mt-2 ">
+            <div className="outer min-h-[500px] absolute   left-0 table h-1/2 w-full -mt-2 ">
               <div className="middle table-cell align-middle">
                 <div className="inner">
                   <div>
@@ -86,11 +86,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className=" invisible">Extra Infomation </div>
-          <div className="ocean h-[3rem] bg-black sm:h-[5rem]">
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
+          {/* <div className=" invisible">Extra Infomation </div> */}
+          <div className="ocean h-[3rem] bg-black sm:h-[5rem] overflow-x-hidden">
+            <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
+            <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
+            <div className="wave absolute w-[10000px] h-[100%] opacity-80"></div>
           </div>
         </div>
         <div
