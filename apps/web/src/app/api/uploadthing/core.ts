@@ -32,7 +32,18 @@ export const ourFileRouter = {
       console.log("DOC COUNT", previousDocs);
 
       if (previousDocs >= 3) {
-        throw new Error("You've reached your free 3 document limit!");
+        throw new z.ZodError([
+          {
+            code: z.ZodIssueCode.custom,
+            message: JSON.stringify({
+              title: "Document Limit Reached",
+              description:
+                "You've reached your free 3 document limit. Please delete a previous document or upgrade to the paid plan.",
+            }),
+            fatal: true,
+            path: [],
+          },
+        ]);
       }
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
@@ -44,8 +55,7 @@ export const ourFileRouter = {
 
       console.log("file url", file.url);
       createNewDocument(metadata.auth.userId, file, metadata.token);
-    })
-    ,
+    }),
   // premiumUploader: f({ image: { maxFileSize: "128MB" } })
   //   // Set permissions and file types for this FileRoute
   //   .middleware(async ({ req }) => {

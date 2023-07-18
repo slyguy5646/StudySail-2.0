@@ -15,21 +15,29 @@ import {
 import { Dispatch, SetStateAction, useState } from "react";
 import { useDash } from "../Dashboard/Nav/DashboardRouterContext";
 
-
-export default function UploadError({errorMessage, open, setOpen}: {errorMessage: string | null, open: boolean, setOpen: Dispatch<SetStateAction<boolean>>}) {
-//   const [open, setOpen] = useState<boolean>(false);
-
+export default function UploadError({
+  title,
+  description,
+  open,
+  setOpen,
+}: {
+  title: string | null;
+  description: string | null;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}) {
+  //   const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
-      <AlertDialog open={open && errorMessage != null} onOpenChange={setOpen} >
+      <AlertDialog open={open && title != null && description != null} onOpenChange={setOpen}>
         {/* <AlertDialogTrigger>
           <IconTrash className="w-8 h-8 text-red-500 bg-red-100 hover:text-red-600 hover:bg-red-200 hover:bg-opacity-80 hover:cursor-pointer rounded-md p-1" />
         </AlertDialogTrigger> */}
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Something went wrong.</AlertDialogTitle>
-            <AlertDialogDescription>{errorMessage}</AlertDialogDescription>
+            <AlertDialogTitle>{title}</AlertDialogTitle>
+            <AlertDialogDescription>{description}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
