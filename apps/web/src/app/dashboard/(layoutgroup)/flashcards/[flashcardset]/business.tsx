@@ -8,7 +8,7 @@ import { useDash } from "@/components/Dashboard/Nav/DashboardRouterContext";
 import { IconArrowLeft } from "@tabler/icons-react";
 import FlashOverviewCard from "@/components/Dashboard/Flashcards/FlashOverviewCard";
 import { CreateFlashcardRequest } from "@/types/schemas";
-import BackButton from "@/components/backButton";
+import DashboardLink from "@/components/dashboardLink";
 
 export default function Chat({ content, set_id }: { content: string; set_id: number }) {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
@@ -41,9 +41,9 @@ export default function Chat({ content, set_id }: { content: string; set_id: num
 
   return (
     <div className="">
-      <BackButton>
+      <DashboardLink>
         <IconArrowLeft className="text-slate-400 w-6 h-6 hover:text-slate-500 cursor-pointer " />
-      </BackButton>
+      </DashboardLink>
       <div className="flex justify-between items-center pb-4">
         <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
         <form onSubmit={(e) => handleSubmit(e, { options: { body: { text: content } } })}>

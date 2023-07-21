@@ -2,10 +2,11 @@ import { prisma } from "@/db";
 import Chat from "./business";
 import { redirect } from "next/navigation";
 import FlashOverviewCard from "@/components/Dashboard/Flashcards/FlashOverviewCard";
-import { IconArrowLeft } from "@tabler/icons-react";
-import BackButton from "@/components/backButton";
+import { IconArrowLeft, IconCards } from "@tabler/icons-react";
+import DashboardLink from "@/components/dashboardLink";
 import Image from "next/image";
 import QuizletButton from "@/components/Dashboard/Flashcards/QuizletButton";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default async function Flashcards({ params }: { params: { flashcardset: string } }) {
   const doc = await prisma.document.findUnique({
@@ -23,12 +24,26 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
       {cards.length <= 0 && <Chat content={doc.content} set_id={doc.flashcard_set_id} />}
       {cards.length > 0 && (
         <div>
-          <BackButton>
+          <DashboardLink>
             <IconArrowLeft className="text-slate-400 w-6 h-6 hover:text-slate-500 cursor-pointer " />
-          </BackButton>
+          </DashboardLink>
           <div className="flex justify-between items-center">
             <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
-        <QuizletButton cards={cards}/>
+            <div className="flex gap-x-2">
+              <TooltipProvider >
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div>
+                      <IconCards className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px] p-1 text-slate-400 border border-slate-200" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>Study</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <QuizletButton cards={cards} />
+            </div>
           </div>
           <div className="flex flex-col gap-y-4 pb-4">
             {cards.map((card) => (
