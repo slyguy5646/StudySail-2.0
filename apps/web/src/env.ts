@@ -14,6 +14,9 @@ export const env = createEnv({
     DATABASE_URL: z.string(),
     UPLOADTHING_SECRET: z.string(),
     UPLOADTHING_APP_ID: z.string(),
+    STRIPE_SAILOR_MONTHLY_PLAN_ID: z.string(),
+    STRIPE_FIRST_MATE_MONTHLY_PLAN_ID: z.string(),
+    STRIPE_CAPTAIN_MONTHLY_PLAN_ID: z.string(),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
