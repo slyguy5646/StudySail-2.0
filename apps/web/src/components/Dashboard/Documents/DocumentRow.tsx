@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import { shortenFileTitle } from "@/utils/ShortenFileTitle";
 
 interface DocumentRowProps {
   router: AppRouterInstance;
@@ -50,7 +51,7 @@ export default function DocumentRow({
 
         {/* {item.icon} */}
         <span className="w-full overflow-hidden text-ellipsis text-left cursor-pointer capitalize">
-          {item.title}
+          {shortenFileTitle(item.title)}
         </span>
       </div>
       {/* <IconChevronDown

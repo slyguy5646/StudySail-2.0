@@ -17,6 +17,8 @@ export const env = createEnv({
     STRIPE_SAILOR_MONTHLY_PLAN_ID: z.string(),
     STRIPE_FIRST_MATE_MONTHLY_PLAN_ID: z.string(),
     STRIPE_CAPTAIN_MONTHLY_PLAN_ID: z.string(),
+    UPSTASH_REDIS_REST_URL: z.string(),
+    UPSTASH_REDIS_TOKEN: z.string(),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),

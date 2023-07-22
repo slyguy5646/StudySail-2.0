@@ -3,6 +3,8 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import z from "zod";
 import { NextResponse } from "next/server";
 import { env } from "@/env";
+import { auth } from "@clerk/nextjs";
+
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -10,13 +12,19 @@ const config = new Configuration({
 });
 const openai = new OpenAIApi(config);
 
+
+
 // IMPORTANT! Set the runtime to edge
 export const runtime = "edge";
 
 export async function POST(req: Request) {
+  const { userId } = auth();
+  if (!userId) return NextResponse.json({ error: "Unauthorized!" }, { status: 401 });
+  
+
+  
   const data = await req.json();
 
-  console.log("I GOT HIT");
   const schema = z.object({
     text: z.string(),
   });
@@ -38,7 +46,7 @@ export async function POST(req: Request) {
         content: "",
         function_call: {
           name: "get_terms_and_definitions",
-          arguments: `{ "text": ${validation.data.text}}`,
+          arguments: `{ "text": ${text}}`,
         },
       },
     ],
@@ -62,11 +70,8 @@ export async function POST(req: Request) {
       },
     ],
   });
-  console.log(response);
-  // // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
-  // Respond with the stream
   return new StreamingTextResponse(stream);
 }
 
-
+const text = `la playa beach`
