@@ -14,15 +14,15 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 import { useDash } from "../Nav/DashboardRouterContext";
+import { useDocuments } from "../Nav/DashboardNav";
 
 export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: number; docTitle: string }) {
   const [open, setOpen] = useState<boolean>(false);
   const { router } = useDash();
+  const { loadedDocuments, setLoadedDocuments } = useDocuments();
 
   async function deleteDoc() {
     const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) });
-    router.refresh();
-    router.push("/dashboard");
   }
   return (
     <>
@@ -41,10 +41,12 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
           <AlertDialogFooter>
             <AlertDialogCancel>Nope</AlertDialogCancel>
             <AlertDialogAction
-              onClick={() => {
-                deleteDoc();
-                router.refresh();
-                router.push("/dashboard");
+              onClick={async () => {
+                await deleteDoc();
+                const previousDocSlug =
+                  loadedDocuments.length > 1 ? loadedDocuments[loadedDocuments.length - 2].id : "";
+                setLoadedDocuments(loadedDocuments.filter((doc) => doc.id != docId));
+                router.push(`/dashboard/${previousDocSlug}`);
               }}
               className="bg-red-500 hover:bg-red-600"
             >

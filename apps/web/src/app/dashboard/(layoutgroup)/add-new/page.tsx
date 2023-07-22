@@ -1,5 +1,5 @@
 
-import BaseDropzone from "@/components/AddNew/BaseDropzone";
+import { MultiUploader } from "@/components/AddNew/BaseDropzone";
 
 
 export default function AddNew() {
@@ -9,7 +9,7 @@ export default function AddNew() {
     <div className="w-full">
       <div className="text-5xl font-bold text-black py-4">New Document</div>
 
-      <BaseDropzone  />
+      <MultiUploader  />
     </div>
   );
 }
