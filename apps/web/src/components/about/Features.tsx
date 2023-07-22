@@ -35,12 +35,12 @@ const features = [
   {
     name: (
       <div className="flex items-center">
-        AI Tools <Chip title={"Coming Soon"} />
+        AI Tools {/*<Chip title={"Coming Soon"} />*/}
       </div>
     ),
     description: (
       <div>
-        Use the power of AI to help with note taking or format study material
+        Use the power of AI to format study material
         for easy review. <LearnMore href="" />
       </div>
     ),
@@ -68,16 +68,15 @@ function FeaturesSection() {
             )}
           >
             StudySail allows you to be the best version of your educational self
-            by giving you all the tools you already use as well as new ones to
-            make your workflow even better.
+            by allowing you to utilize your study material in a more productive way.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-          <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-4 lg:max-w-none lg:grid-cols-2 lg:gap-y-8">
+          <div className="flex flex-col justify-center items-center lg:grid max-w-xl grid-cols-1 lg:gap-x-8 gap-y-4 lg:max-w-none lg:grid-cols-2 lg:gap-y-8">
             {features.map((feature) => (
               <div
                 key={feature.key}
-                className="relative pl-16  border-cyan-500 p-4 rounded-md  "
+                className="relative md:pl-16  border-cyan-500 p-4 rounded-md  "
               >
                 <div className="text-xl font-semibold leading-7 text-white flex items-center  gap-x-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500">

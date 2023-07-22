@@ -48,18 +48,7 @@ const pointsOfInterest: POI[] = [
     icon: BookOpenIcon,
     image: studyflashcards,
   },
-  {
-    name: <div className="flex items-center">Study Flashcards</div>,
-    caption: "Study your custom flashcards directly in StudySail or copy them for external use.",
-    icon: BookOpenIcon,
-    image: studyflashcards,
-  },
-  {
-    name: <div className="flex items-center">Study Flashcards</div>,
-    caption: "Study your custom flashcards directly in StudySail or copy them for external use.",
-    icon: BookOpenIcon,
-    image: studyflashcards,
-  },
+ 
   // {
   //   name: <div className="flex items-center">All the platforms</div>,
   //   description:
@@ -86,50 +75,61 @@ export default function AppDisplay() {
                 Your study material on steroids
               </p>
               <p className={clsx("mt-6 text-md leading-8 text-neutral-500", poppinsLight.className)}>
-                Notes are great but what if you could enhance them? Now you can with StudySail.
+                Study guides and notes are great but what if you could enhance them and utilize them in a more significant way?
               </p>
-              <div
-                className={clsx(
-                  "mt-10 max-w-xl space-y-2 text-base leading-7 text-white lg:max-w-none",
-                  poppinsLight.className
-                )}
-              >
-                <ScrollArea className="h-[275px]" type="always">
-                  {pointsOfInterest.map((poi, index) => (
-                    <div
-                      key={JSON.stringify(poi.name)}
-                      // onMouseEnter={() => setCurrentFeatureIndex(index)}
-                      // onMouseLeave={() => setCurrentFeatureIndex(0)}
-                      onClick={() => setCurrentFeatureIndex(index)}
-                      className={`hover:cursor-pointer hover:bg-neutral-800 ${
-                        currentFeatureIndex == index ? "bg-neutral-800" : ""
-                      } p-4 rounded-xl`}
-                    >
-                      <div className="flex items-center gap-3 font-semibold text-white">
-                        <poi.icon className=" h-8 w-8 text-cyan-600  " />
-                        <div>{poi.name}</div>
-                      </div>{" "}
-                      {/* <div className="pl-11 text-neutral-500">
-                        {poi.caption}
-                      </div> */}
-                    </div>
-                  ))}
-                </ScrollArea>
+              <div className="flex justify-center">
+                <div
+                  className={clsx(
+                    "mt-10  space-y-2 text-base leading-7 text-white lg:max-w-none",
+                    poppinsLight.className
+                  )}
+                >
+                  {/* <ScrollArea className="h-[275px] grid grid-cols-2" type="always"> */}
+                  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
+                    {pointsOfInterest.map((poi, index) => (
+                      <div
+                        key={JSON.stringify(poi.name)}
+                        // onMouseEnter={() => setCurrentFeatureIndex(index)}
+                        // onMouseLeave={() => setCurrentFeatureIndex(0)}
+                        onClick={() => setCurrentFeatureIndex(index)}
+                        className={`flex items-center justify-start hover:cursor-pointer hover:bg-neutral-800 ${
+                          currentFeatureIndex == index ? "bg-neutral-800" : ""
+                        } p-4 rounded-xl`}
+                      >
+                        <div className="flex items-center gap-3 font-semibold text-white">
+                          <poi.icon className=" h-8 w-8 text-cyan-600  " />
+                          <div>{poi.name}</div>
+                        </div>{" "}
+                        {/* <div className="pl-11 text-neutral-500">
+                            {poi.caption}
+                          </div> */}
+                      </div>
+                    ))}
+                  </div>
+                  {/* </ScrollArea> */}
+                </div>
               </div>
             </div>
           </div>
-          <div>
-            <Image
-              src={pointsOfInterest[currentFeatureIndex].image}
-              alt="Product screenshot"
-              className="  mt-10 aspect-auto h-full w-full max-w-5xl  rounded-xl border border-slate-300 sm:max-w-4xl"
-              width={2432}
-              height={1442}
-            />
-            <div className={clsx("mt-2 text-sm leading-8 text-neutral-500", poppinsLight.className)}>
-              {pointsOfInterest[currentFeatureIndex].caption}
-            </div>
-          </div>
+          {/* <div> */}
+          <Image
+            src={pointsOfInterest[currentFeatureIndex].image}
+            alt="Product screenshot"
+            className="  mt-10 aspect-auto h-full w-full max-w-5xl  rounded-xl border border-slate-300 sm:max-w-4xl"
+            width={2432}
+            height={1442}
+          />
+          {/* </div> */}
+        </div>
+      </div>
+      <div className="flex justify-center lg:justify-end px-4 xl:px-12">
+        <div
+          className={clsx(
+            "mt-4 text-sm text-center lg:text-right sm:max-w-4xl max-w-5xl lg:max-w-[50%]  text-neutral-500",
+            poppinsLight.className
+          )}
+        >
+          {pointsOfInterest[currentFeatureIndex].caption}
         </div>
       </div>
     </div>
