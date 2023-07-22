@@ -5,8 +5,6 @@ export const env = createEnv({
   clientPrefix: "",
   server: {
     CLERK_SECRET_KEY: z.string(),
-    UPLOADTHING_SECRET: z.string(),
-    UPLOADTHING_APP_ID: z.string(),
   },
   client: {},
 
