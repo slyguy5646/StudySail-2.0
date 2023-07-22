@@ -62,7 +62,7 @@ export default function Chat({ content, set_id }: { content: string; set_id: num
         </div>
       )} */}
 
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-4 pb-4">
         {parsedResponse &&
           parsedResponse
             .filter((item) => item.term && item.definition)

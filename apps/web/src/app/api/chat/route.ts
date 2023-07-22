@@ -47,13 +47,14 @@ export async function POST(req: Request) {
       {
         name: "get_terms_and_definitions",
         description:
-          "convert inputted text to as many terms/questions and defintions/answers as you can without being repetitive. If a given term and definition pair seems to trivial, exclude it. If it appears as though the definition is incorrect, correct it. if a given term doesn't have a definition don't return it",
+          "Convert inputted text to as many detailed terms/questions and defintions/answers as you can without being too repetitive. If it appears as though the definition is incorrect, not detailed enough, or not put the correct way, fix it. For example, if a math formula is given as a term ex. (the change of base formula )give the actual formula as the definition (ex. log_a(b) = log_c(b) / log_c(a)) not just a description of that formula. If a given term doesn't have a definition don't return it",
         parameters: {
           type: "object",
           properties: {
             text: {
               type: "string",
-              description: "The text to convert to terms and defintions",
+              description:
+                "inputted text to as many detailed terms/questions and defintions/answers as you can without being too repetitive. If it appears as though the definition is incorrect, not detailed enough, or not put the correct way, fix it. For example, if a math formula is given as a term ex. (the change of base formula )give the actual formula as the definition (ex. log_a(b) = log_c(b) / log_c(a)) not just a description of that formula. If a given term doesn't have a definition don't return it",
             },
           },
           required: ["text"],

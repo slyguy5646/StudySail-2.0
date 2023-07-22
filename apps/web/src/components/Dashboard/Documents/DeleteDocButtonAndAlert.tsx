@@ -40,7 +40,14 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Nope</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteDoc()} className="bg-red-500 hover:bg-red-600">
+            <AlertDialogAction
+              onClick={() => {
+                deleteDoc();
+                router.refresh();
+                router.push("/dashboard");
+              }}
+              className="bg-red-500 hover:bg-red-600"
+            >
               Yup
             </AlertDialogAction>
           </AlertDialogFooter>
