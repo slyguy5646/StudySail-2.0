@@ -29,7 +29,7 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
           <DashboardLink>
             <IconArrowLeft className="text-slate-400 w-6 h-6 hover:text-slate-500 cursor-pointer " />
           </DashboardLink>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center pb-4">
             <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
             <div className="flex gap-x-2">
               <TooltipProvider>
