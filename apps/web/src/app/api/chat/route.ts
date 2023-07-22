@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         content: "",
         function_call: {
           name: "get_terms_and_definitions",
-          arguments: `{ "text": ${text}}`,
+          arguments: `{ "text": ${validation.data.text}}`,
         },
       },
     ],
