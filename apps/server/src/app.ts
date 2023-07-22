@@ -1,20 +1,9 @@
 import "dotenv/config"; // To read CLERK_API_KEY
 
-import express from "express";
 import { parsePdfTextFromUrl } from "./utils/ParsePDFTextFromURL";
-import {
-  ClerkExpressWithAuth,
-  LooseAuthProp,
-  clerkClient,
-  setClerkApiKey,
-  ClerkExpressRequireAuth,
-  WithAuthProp,
-  StrictAuthProp,
-} from "@clerk/clerk-sdk-node";
+import { ClerkExpressWithAuth, LooseAuthProp } from "@clerk/clerk-sdk-node";
 
 import { parseRequestSchema } from "./schemas";
-
-import type { RequireAuthProp, WebhookEvent } from "@clerk/clerk-sdk-node";
 
 import { createServer } from "./server";
 
@@ -28,9 +17,8 @@ export const app = createServer();
 const port = 3001;
 //ClerkExpressRequireAuth({}),
 app.post("/parse-pdf", ClerkExpressWithAuth({}), async (req, res) => {
-  if (!req.auth.userId) return res.status(401).json({error: "Unauthorized!"})
+  if (!req.auth.userId) return res.status(401).json({ error: "Unauthorized!" });
   const validation = parseRequestSchema.safeParse(req.body);
-  
 
   if (!validation.success) return res.status(422).json({ error: "Invalid body format" });
   const { file_key } = validation.data;
@@ -44,4 +32,3 @@ app.post("/parse-pdf", ClerkExpressWithAuth({}), async (req, res) => {
 app.listen(port, async () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
-
