@@ -15,7 +15,7 @@ export default function QuizletButton({ cards }: { cards: Flashcard[] }) {
   }, [cards]);
 
   return (
-    <TooltipProvider delayDuration={150}>
+    <TooltipProvider >
       <Tooltip>
         <TooltipTrigger>
           <div
@@ -24,7 +24,7 @@ export default function QuizletButton({ cards }: { cards: Flashcard[] }) {
                 navigator.clipboard.writeText(formatted);
                 toast({
                   title: "Copied Quizlet Format!",
-                  description: "You just copied a quizlet compatible format from these flashcards. Read the docs for more info",
+                  description: "You just copied a quizlet compatible format from these flashcards. Read the docs for more info.",
                 });
               }
             }}

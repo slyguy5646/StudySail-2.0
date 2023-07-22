@@ -9,6 +9,8 @@ import QuizletButton from "@/components/Dashboard/Flashcards/QuizletButton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default async function Flashcards({ params }: { params: { flashcardset: string } }) {
+  console.log("FLASHCARDSET", params.flashcardset)
+  if (!params.flashcardset) redirect("/dashboard")
   const doc = await prisma.document.findUnique({
     where: { flashcard_set_id: parseInt(params.flashcardset) },
     include: { flashcard_set: true },
@@ -30,12 +32,12 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
           <div className="flex justify-between items-center">
             <div className="text-5xl font-bold text-black capitalize my-4">Flashcards</div>
             <div className="flex gap-x-2">
-              <TooltipProvider >
+              <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <div>
+                    <DashboardLink insert route="study">
                       <IconCards className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px] p-1 text-slate-400 border border-slate-200" />
-                    </div>
+                    </DashboardLink>
                   </TooltipTrigger>
                   <TooltipContent side="left">
                     <p>Study</p>
