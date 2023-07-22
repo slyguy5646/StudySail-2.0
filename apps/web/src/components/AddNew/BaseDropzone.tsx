@@ -20,7 +20,7 @@ export default function BaseDropzone() {
       <UploadDropzone
         endpoint="freeUploader"
         onClientUploadComplete={(res) => {
-          // console.log("Files: ", res);
+          console.log("Files: ", res);
           router.push("/dashboard");
         }}
         onUploadError={(error) => {

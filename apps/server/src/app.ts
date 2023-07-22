@@ -20,15 +20,17 @@ import { createServer } from "./server";
 
 declare global {
   namespace Express {
-    interface Request extends StrictAuthProp {}
+    interface Request extends LooseAuthProp {}
   }
 }
 
 export const app = createServer();
 const port = 3001;
 //ClerkExpressRequireAuth({}),
-app.post("/parse-pdf", async (req, res) => {
+app.post("/parse-pdf", ClerkExpressWithAuth({}), async (req, res) => {
+  if (!req.auth.userId) return res.status(401).json({error: "Unauthorized!"})
   const validation = parseRequestSchema.safeParse(req.body);
+  
 
   if (!validation.success) return res.status(422).json({ error: "Invalid body format" });
   const { file_key } = validation.data;
@@ -42,3 +44,4 @@ app.post("/parse-pdf", async (req, res) => {
 app.listen(port, async () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
+

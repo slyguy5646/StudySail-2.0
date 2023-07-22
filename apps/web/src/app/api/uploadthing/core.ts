@@ -56,6 +56,7 @@ export const ourFileRouter = {
 
       console.log("file url", file.url);
       createNewDocument(metadata.auth.userId, file, metadata.token);
+      
     }),
   // premiumUploader: f({ image: { maxFileSize: "128MB" } })
   //   // Set permissions and file types for this FileRoute
