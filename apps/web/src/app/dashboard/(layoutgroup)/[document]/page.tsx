@@ -2,7 +2,7 @@ import Chip from "@/components/chip";
 import { prisma } from "@/db";
 import { redirect } from "next/navigation";
 import { parseFileExtension } from "@/utils/GetFileExtension";
-import { IconArrowRight, IconExternalLink, IconTrash } from "@tabler/icons-react";
+import { IconArrowRight, IconExternalLink, IconCarouselHorizontal, IconEye } from "@tabler/icons-react";
 import { shortenFileTitle } from "@/utils/ShortenFileTitle";
 import FlashcardSummaryCard from "@/components/Dashboard/Flashcards/FlashcardSummaryCard";
 import DeleteDocButtonAndAlert from "@/components/Dashboard/Documents/DeleteDocButtonAndAlert";
@@ -48,19 +48,33 @@ export default async function DocumentPage({ params }: { params: { document: str
       {flashcards.length > 0 && (
         <div>
           <div className="flex gap-x-2  items-center mt-2 mb-4">
-            <div className="font-bold text-2xl">Flashcards</div>
-            <DashboardLink insert route="flashcards">
-              <TooltipProvider >
-                <Tooltip>
-                  <TooltipTrigger className="flex items-center">
-                    <IconArrowRight className="text-slate-400 w-6 h-6 hover:text-slate-500 cursor-pointer " />
-                  </TooltipTrigger>
-                  <TooltipContent side="right">
-                    <p>Go to Flashcards</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </DashboardLink>
+            <div className="font-bold text-3xl">Flashcards</div>
+            <div className="flex gap-x-2 items-center">
+              <DashboardLink insert route="flashcards/study">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger className="flex items-center">
+                      <IconCarouselHorizontal className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px]  text-slate-400 border border-slate-200 p-1 " />
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>Study</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </DashboardLink>
+              <DashboardLink insert route="flashcards">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger className="flex items-center">
+                      <IconEye className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px]  text-slate-400 border border-slate-200 p-1 " />
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>Go to Flashcards</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </DashboardLink>
+            </div>
           </div>
           <ScrollArea className="h-[350px] rounded-md border p-4">
             <div className="flex flex-col gap-y-2">

@@ -2,7 +2,7 @@ import { prisma } from "@/db";
 import Chat from "./business";
 import { redirect } from "next/navigation";
 import FlashOverviewCard from "@/components/Dashboard/Flashcards/FlashOverviewCard";
-import { IconArrowLeft, IconCards } from "@tabler/icons-react";
+import { IconArrowLeft, IconCarouselHorizontal } from "@tabler/icons-react";
 import DashboardLink from "@/components/dashboardLink";
 import Image from "next/image";
 import QuizletButton from "@/components/Dashboard/Flashcards/QuizletButton";
@@ -36,7 +36,7 @@ export default async function Flashcards({ params }: { params: { flashcardset: s
                 <Tooltip>
                   <TooltipTrigger>
                     <DashboardLink insert route="study">
-                      <IconCards className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px] p-1 text-slate-400 border border-slate-200" />
+                      <IconCarouselHorizontal className="hover:cursor-pointer rounded-md select-none w-[40px] h-[40px] p-1 text-slate-400 border border-slate-200" />
                     </DashboardLink>
                   </TooltipTrigger>
                   <TooltipContent side="left">
