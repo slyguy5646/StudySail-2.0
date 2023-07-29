@@ -1,0 +1,34 @@
+"use client";
+
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { useRouter, usePathname } from "next/navigation";
+import { ReactNode, useContext, createContext } from "react";
+
+export type NoNullFields<Ob> = {
+  [K in keyof Ob]: Ob[K] extends object ? NoNullFields<Ob[K]> : NonNullable<Ob[K]>;
+};
+interface IDashboardRouterContext {
+  router: AppRouterInstance | null;
+  currentRoute: string;
+}
+
+export const DashboardRouterContext = createContext<{
+  router: AppRouterInstance | null;
+  currentRoute: string;
+}>({ router: null, currentRoute: "" });
+
+type NonNullDashboardRouterContext = NoNullFields<IDashboardRouterContext>;
+
+export default function DashboardRouterProvider({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  return (
+    <DashboardRouterContext.Provider value={{ router, currentRoute: pathname }}>
+      {children}
+    </DashboardRouterContext.Provider>
+  );
+}
+
+export function useDash() {
+  return useContext(DashboardRouterContext) as NonNullDashboardRouterContext;
+}
