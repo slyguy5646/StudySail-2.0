@@ -118,19 +118,6 @@ export function MultiUploader() {
           )}
         </div>
       </div>
-
-      <button
-        onClick={async () => {
-          const res = await fetch("/api/after-creation", {
-            method: "POST",
-            body: JSON.stringify({}),
-          });
-
-        }}
-        className="bg-cyan-500 rounded-md text-white px-4 py-2 font-semibold"
-      >
-        Hello
-      </button>
     </div>
   );
 }
