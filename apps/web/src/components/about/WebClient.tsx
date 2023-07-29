@@ -69,7 +69,7 @@ export default function AppDisplay() {
               <h2
                 className={clsx("text-base font-semibold leading-7 text-cyan-500 decoration-white", poppins.className)}
               >
-                Web
+                Features
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Your study material on steroids
