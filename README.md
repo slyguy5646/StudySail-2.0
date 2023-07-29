@@ -1,5 +1,5 @@
 # StudySail
-> Document based studying
+> Document based studying for cool kids
 
 ## Feature To-Do
 
