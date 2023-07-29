@@ -1,1 +1,1 @@
-export const PARSE_URL = "https://parser.studysail.com";
+export const PARSE_URL = "https://studysail-20-production.up.railway.app";
