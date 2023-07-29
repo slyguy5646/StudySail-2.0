@@ -23,7 +23,6 @@ export default async function DocumentPage({ params }: { params: { document: str
 
   const fileType = parseFileExtension(doc.title);
   const name = shortenFileTitle(doc.title);
-  console.log(doc.storage_key);
   const flashcards = await prisma.flashcard.findMany({ where: { flashcard_set_id: doc.flashcard_set_id } });
   return (
     <div>

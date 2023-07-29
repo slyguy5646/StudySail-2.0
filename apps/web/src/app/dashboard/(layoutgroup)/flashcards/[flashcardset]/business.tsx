@@ -26,7 +26,6 @@ export default function Chat({ content, set_id }: { content: string; set_id: num
 
   async function createCards() {
     if (!isLoading && parsedResponse.length > 0) {
-      console.log("CREATED CARDS");
       const data: CreateFlashcardRequest = {
         cards: [...parsedResponse.map((card) => ({ set_id, term: card.term, definition: card.definition }))],
       };

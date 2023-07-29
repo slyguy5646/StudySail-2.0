@@ -27,7 +27,6 @@ export async function POST(req: Request) {
     skipDuplicates: true,
   });
 
-  console.log("BOOM CREATED");
 
   return new NextResponse();
 }

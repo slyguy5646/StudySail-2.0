@@ -22,10 +22,7 @@ app.post("/parse-pdf", ClerkExpressWithAuth({}), async (req, res) => {
 
   if (!validation.success) return res.status(422).json({ error: "Invalid body format" });
   const { file_key } = validation.data;
-  console.log(req.body);
-  console.log(`https://utfs.io/f/${file_key}`);
   const text = await parsePdfTextFromUrl(`https://utfs.io/f/${file_key}`);
-  console.log("TEXT", text);
   res.status(200).json({ text });
 });
 

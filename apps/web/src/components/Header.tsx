@@ -32,9 +32,7 @@ function Header() {
   const [visible, setVisible] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    console.log(visible);
-  }, [visible]);
+
   return (
     <div>
       <header className="absolute inset-x-0 top-0 z-50">

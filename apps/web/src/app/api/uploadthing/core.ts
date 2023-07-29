@@ -30,7 +30,6 @@ export const ourFileRouter = {
       if (!auth.userId || !token) throw new Error("Unauthorized");
 
       const previousDocs = await prisma.document.count({ where: { user_id: auth.userId } });
-      console.log("DOC COUNT", previousDocs);
 
       if (previousDocs >= 3) {
         throw new z.ZodError([
@@ -51,10 +50,7 @@ export const ourFileRouter = {
       return { auth, token };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete for userId:", metadata.auth.userId);
 
-      console.log("file url", file.url);
       await createNewDocument(metadata.auth.userId, file, metadata.token);
     }),
   // premiumUploader: f({ image: { maxFileSize: "128MB" } })

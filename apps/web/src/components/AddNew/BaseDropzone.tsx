@@ -37,7 +37,6 @@ export function MultiUploader() {
       setLoading(true);
       if (!e) return;
       const { fileKey } = e[0] as { fileKey: string; fileUrl: string };
-      console.log("NEW UPLOAD", e);
 
       const body: AfterUploadCompleteRequest = {
         fileKey,
@@ -49,7 +48,6 @@ export function MultiUploader() {
         if (res.ok) {
           const { url } = await res.json();
 
-          console.log("NEW FILE URL", url);
 
           setTimeout(() => {
             setLoading(false);
@@ -128,7 +126,6 @@ export function MultiUploader() {
             body: JSON.stringify({}),
           });
 
-          console.log("BUTTON REPSONSE", await res.json());
         }}
         className="bg-cyan-500 rounded-md text-white px-4 py-2 font-semibold"
       >

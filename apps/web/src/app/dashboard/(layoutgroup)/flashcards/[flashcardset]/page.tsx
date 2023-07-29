@@ -9,7 +9,6 @@ import QuizletButton from "@/components/Dashboard/Flashcards/QuizletButton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default async function Flashcards({ params }: { params: { flashcardset: string } }) {
-  console.log("FLASHCARDSET", params.flashcardset)
   if (!params.flashcardset) redirect("/dashboard")
   const doc = await prisma.document.findUnique({
     where: { flashcard_set_id: parseInt(params.flashcardset) },

@@ -22,7 +22,7 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
   const { loadedDocuments, setLoadedDocuments } = useDocuments();
 
   async function deleteDoc() {
-    const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) }).catch(e => console.log("ERROR"));
+    const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) }).catch();
   }
   return (
     <>
