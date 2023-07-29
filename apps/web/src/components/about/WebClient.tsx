@@ -116,6 +116,8 @@ export default function AppDisplay() {
             src={pointsOfInterest[currentFeatureIndex].image}
             alt="Product screenshot"
             className="  mt-10 aspect-auto h-full w-full max-w-5xl  rounded-xl border border-slate-300 sm:max-w-4xl"
+            quality={50}
+            placeholder="blur"
             width={2432}
             height={1442}
           />

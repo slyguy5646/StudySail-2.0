@@ -24,7 +24,7 @@ const pricingTiers: PricingTier[] = [
     available: true,
     features: [
       { title: "3 Stored Documents", available: true },
-      { title: "AI Generated Flashcards", available: true },
+      { title: "Generated Flashcards", available: true },
       // { title: "Audio Transcription", available: false },
     ],
   },
