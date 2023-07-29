@@ -1,5 +1,6 @@
 import "dotenv/config"; // To read CLERK_API_KEY
 
+
 import { parsePdfTextFromUrl } from "./utils/ParsePDFTextFromURL";
 import { ClerkExpressWithAuth, LooseAuthProp } from "@clerk/clerk-sdk-node";
 
@@ -14,7 +15,7 @@ declare global {
 }
 
 export const app = createServer();
-const port = 3001;
+const port = process.env.PORT || 3001;
 //ClerkExpressRequireAuth({}),
 app.post("/parse-pdf", ClerkExpressWithAuth({}), async (req, res) => {
   if (!req.auth.userId) return res.status(401).json({ error: "Unauthorized!" });
