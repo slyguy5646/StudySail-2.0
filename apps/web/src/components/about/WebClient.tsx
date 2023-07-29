@@ -61,7 +61,7 @@ export default function AppDisplay() {
   const [currentFeatureIndex, setCurrentFeatureIndex] = useState<number>(0);
 
   return (
-    <div className="overflow-hidden bg-black  py-24 sm:py-32" id="flashcards">
+    <div className="overflow-hidden bg-black  py-24 sm:py-32" id="features">
       <div className="mx-auto max-w-[100rem] ">
         <div className="mx-auto flex flex-col items-center justify-between px-4 sm:px-10 lg:flex-row">
           <div className="sm:min-w-[500px] lg:pr-8  lg:pt-4">

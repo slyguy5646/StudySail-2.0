@@ -24,7 +24,7 @@ function Header() {
   const { isSignedIn, user } = useUser();
   const navigation = [
     { name: "About", id: "about" },
-    { name: "Flashcards", id: "flashcards" },
+    { name: "Features", id: "features" },
     { name: "Pricing", id: "pricing" },
     // { name: "Mobile", id: "#" },
     // { name: "Roadmap", id: "/roadmap" },
