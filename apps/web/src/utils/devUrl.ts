@@ -1,1 +1,1 @@
-export const PARSE_URL = "http://localhost:3001";
+export const PARSE_URL = "https://parser.studysail.com";
