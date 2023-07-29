@@ -1,4 +1,4 @@
-# StudySail 
+# StudySail   
 > Document based studying for cool kids
 
 ## Feature To-Do
