@@ -22,7 +22,7 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
   const { loadedDocuments, setLoadedDocuments } = useDocuments();
 
   async function deleteDoc() {
-    const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) });
+    const res = await fetch("/api/delete-doc", { method: "POST", body: JSON.stringify({ id: docId }) }).catch(e => console.log("ERROR"));
   }
   return (
     <>
@@ -42,7 +42,7 @@ export default function DeleteDocButtonAndAlert({ docId, docTitle }: { docId: nu
             <AlertDialogCancel>Nope</AlertDialogCancel>
             <AlertDialogAction
               onClick={async () => {
-                await deleteDoc();
+                await deleteDoc()
                 const previousDocSlug =
                   loadedDocuments.length > 1 ? loadedDocuments[loadedDocuments.length - 2].id : "";
                 setLoadedDocuments(loadedDocuments.filter((doc) => doc.id != docId));
