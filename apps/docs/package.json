@@ -19,6 +19,7 @@
     "lucide-react": "^0.263.1",
     "next-contentlayer": "^0.3.4",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwindcss-animate": "^1.0.6",
+    "next": "13.4.0"
   }
 }
