@@ -37,7 +37,7 @@ export default function Home() {
                         <div className="w-fit  flex justify-center items-center rounded-full bg-gradient-to-r from-cyan-200 via-cyan-400 to-cyan-700 p-[2px]">
                           <a
                           target={"_blank"}
-                            href="https://docs.studysail.com/generate-flashcards"
+                            href="https://docs.studysail.com/generating-flashcards"
                             className="flex-none rounded-full bg-gray-900 py-1 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                           >
                             Our all new flashcard generator is here! <span aria-hidden="true">&rarr;</span>
