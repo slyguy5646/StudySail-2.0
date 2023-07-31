@@ -8,6 +8,7 @@ import { allPosts } from "contentlayer/generated";
 
 import DocumentRow from "./DocRow";
 import { deSlugify, groupByCategory, slugify } from "@/utils/contentUtils";
+import Chip from "../chip";
 
 interface OptionsBarProps {
   config: SideBarSection[];
@@ -20,18 +21,18 @@ function MainOptionsBar({ config, router, currentPage, documents }: OptionsBarPr
   return (
     <aside className="col-span-1 hidden h-[100dvh] border-r border-r-slate-200 pb-12 dark:border-r-neutral-700 md:inline">
       <div className="px-8 lg:py-6 ">
-        <p className="flex items-center text-3xl font-bold ">
+        <div className="flex items-center text-3xl font-bold ">
           <a href="/">
-            <span className=" invisible text-2xl text-black dark:text-white lg:visible flex items-center gap-x-2">
+            <div className=" invisible text-2xl text-black dark:text-white lg:visible flex items-center gap-x-2">
               <IconFileDescription className="h-7 w-7 flex-shrink-0" />
 
               <div>StudySail</div>
-            </span>
-            <p className="text-slate-400 text-sm font-normal pt-2 text-center hidden lg:flex">
-              Official documentation
-            </p>
+            </div>
           </a>
-        </p>
+        </div>
+        <div className="w-full flex justify-center">
+          <Chip title="Docs" className="dark:text-white text-black w-20" />
+        </div>
       </div>
       <div className="space-y-4 ">
         <div className="space-y-4">

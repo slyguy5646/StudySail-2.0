@@ -13,8 +13,8 @@ import BurgerOptions from "./Burger";
 
 import { UserProfile, useUser } from "@clerk/nextjs";
 import { Document } from "@prisma/client";
-
-
+import { Switch } from "@/components/ui/switch";
+import { DarkModeSwitch } from "../DarkModeStuff";
 
 export const ErrorDialogueContext = createContext<{
   universalErrorOpen: boolean;
@@ -38,7 +38,7 @@ export default function Main({ children, documents }: { children: React.ReactNod
 
   const [universalErrorOpen, setUniversalErrorOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState<boolean>(false);
+  const [profileOpen, setProfileOpfen] = useState<boolean>(false);
 
   const [loadedDocuments, setLoadedDocuments] = useState<Document[]>(documents);
 
@@ -72,12 +72,7 @@ export default function Main({ children, documents }: { children: React.ReactNod
         <div className="flex">
           <div className="grid  h-[100dvh] w-full grid-cols-5 overflow-hidden xl:grid-cols-6">
             {" "}
-            <MainOptionsBar
-              config={sideBarConfig}
-              router={router}
-              currentPage={currentPage}
-              documents={[]}
-            />
+            <MainOptionsBar config={sideBarConfig} router={router} currentPage={currentPage} documents={[]} />
             <BurgerOptions
               config={sideBarConfig}
               router={router}
@@ -99,10 +94,9 @@ export default function Main({ children, documents }: { children: React.ReactNod
                       <IconMenu2 className="h-6 w-6 text-black dark:text-white" aria-hidden="true" />
                     </button>
                     <div className="ml-auto mr-4">
-                      <h3 className="hidden text-sm font-semibold text-black dark:text-white md:inline">
-                      </h3>
+                      <h3 className="hidden text-sm font-semibold text-black dark:text-white md:inline"></h3>
                     </div>
-
+                    <DarkModeSwitch />
                   </div>
 
                   <ErrorDialogueContext.Provider
@@ -125,6 +119,6 @@ export default function Main({ children, documents }: { children: React.ReactNod
   );
 }
 
-export function useDocuments(){
+export function useDocuments() {
   return useContext(DocumentsContext);
 }

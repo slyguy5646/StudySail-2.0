@@ -9,6 +9,7 @@ import Image from "next/image";
 import A from "@/components/Docs/Anchor";
 
 import { Metadata } from "next";
+import StringToTabler from "@/components/StringToTabler";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -26,7 +27,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata | unde
     title,
     date: publishedTime,
 
-    
     slug,
   } = post;
 
@@ -39,7 +39,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata | unde
       type: "article",
       publishedTime,
       url: `https://docs.studysail.com/${slug}`,
-      
     },
   };
 }
@@ -52,32 +51,38 @@ const mdxComponents: MDXComponents = {
       {children}
     </A>
   ),
-  h1: ({ children }) => <h1 className="text-slate-200 text-3xl font-semibold py-2">{children}</h1>,
-  h3: ({ children }) => <h3 className="text-slate-200 text-xl font-semibold py-2">{children}</h3>,
+  h1: ({ children }) => <h1 className="text-cyan-500 text-3xl font-semibold py-2">{children}</h1>,
+  h3: ({ children }) => <h3 className="text-cyan-500 text-xl font-semibold py-2">{children}</h3>,
   p: ({ children }) => <p className="py-2">{children}</p>,
   ImageWithCaption: ({ src, alt, caption }) => (
     <div className="py-4">
-      <img src={src} alt={alt} className="rounded-md" />
+      <img src={src} alt={alt} className="rounded-md dark:border-neutral-700 border-slate-200 border" />
       <div className="text-md font-light pt-1">{caption}</div>
     </div>
   ),
-  
+
+  Step: ({ title, number }) => (
+    <div className="flex gap-x-4 items-center">
+      <div className="w-12 h-12 text-2xl font-bold flex text-center justify-center items-center rounded-full border-2 border-cyan-500">{number}</div>
+      <div className="text-2xl font-semibold">{title}</div>
+    </div>
+  ),
 };
 
 export default function Post({ params }: { params: any }) {
   const slug = params.doc;
 
-
-  const post = allPosts.find((post) => post.slug === slug);
+  const doc = allPosts.find((doc) => doc.slug === slug);
   // return (<div className="text-white">{JSON.stringify(post)}</div>)
-  if (!post) return redirect("/");
-  const Component = useMDXComponent(post.body.code);
+  if (!doc) return redirect("/");
+  const Component = useMDXComponent(doc.body.code);
 
   return (
     <div className="mx-auto px-6 pt-8">
-      <h1 className="mb-8  text-4xl text-black font-bold capitalize text-left">
-        {post.title}
-      </h1>
+      <div className="flex gap-x-4 items-center mb-8">
+        <StringToTabler iconTitle={doc.icon} className="w-10 h-10" />
+        <h1 className="  text-4xl text-black dark:text-white font-bold capitalize text-left">{doc.title}</h1>
+      </div>
 
       <Component components={mdxComponents} />
     </div>

@@ -13,7 +13,7 @@ function A({
   className?: string;
 }) {
   return (
-    <a className={cn("text-custom-400 hover:text-custom-500", className)} href={href} target={target}>
+    <a className={cn("text-cyan-500 hover:text-cyan-600", className)} href={href} target={target}>
       {children}
     </a>
   );
