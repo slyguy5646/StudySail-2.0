@@ -15,8 +15,6 @@ export type Post = {
   type: 'Post'
   /** The title of the post */
   title: string
-  /** The date of the post */
-  date: IsoDateTimeString
   /** The heading this doc should go under */
   category: 'flashcards' | 'file-storage' | 'misc'
   /** The tabler icon component title to be used in the navbar */

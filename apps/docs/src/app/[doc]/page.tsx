@@ -63,9 +63,20 @@ const mdxComponents: MDXComponents = {
 
   Step: ({ title, number }) => (
     <div className="flex gap-x-4 items-center">
-      <div className="w-12 h-12 text-2xl font-bold flex text-center justify-center items-center rounded-full border-2 border-cyan-500">{number}</div>
+      <div className="w-12 h-12 text-2xl font-bold flex text-center justify-center items-center rounded-full border-2 border-cyan-500">
+        {number}
+      </div>
       <div className="text-2xl font-semibold">{title}</div>
     </div>
+  ),
+  Video: () => (
+    <video width="320" height="240" controls>
+      <source
+        src="https://firebasestorage.googleapis.com/v0/b/blog-files-d9a40.appspot.com/o/flashcardgeneration.mov?alt=media&token=21d4f05b-dcd1-4846-8055-dda3eddb045b"
+        type="video/mov"
+      />
+      {/* <source src="movie.ogg" type="video/ogg" /> */}
+    </video>
   ),
 };
 
