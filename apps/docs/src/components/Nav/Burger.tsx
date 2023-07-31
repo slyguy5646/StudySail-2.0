@@ -1,13 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect, Dispatch } from "react";
+import { Dispatch } from "react";
 import { Dialog } from "@headlessui/react";
 import { SideBarSection } from "./SidebarConfig";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { IconBallAmericanFootball, IconFileDescription, IconPlus, IconSailboat, IconX } from "@tabler/icons-react";
-import Image from "next/image";
-import puppo from "@/puppo.png";
+import { IconFileDescription, IconX } from "@tabler/icons-react";
 import DocumentRow from "./DocRow";
 import { allPosts } from "contentlayer/generated";
 import { groupByCategory, deSlugify } from "@/utils/contentUtils";

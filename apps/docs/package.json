@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.16",
     "@radix-ui/react-switch": "^1.0.3",
     "@tabler/icons-react": "^2.30.0",
     "class-variance-authority": "^0.7.0",

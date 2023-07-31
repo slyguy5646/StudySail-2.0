@@ -11,9 +11,7 @@ import { sideBarConfig } from "./SidebarConfig";
 import MainOptionsBar from "./Main";
 import BurgerOptions from "./Burger";
 
-import { UserProfile, useUser } from "@clerk/nextjs";
-import { Document } from "@prisma/client";
-import { Switch } from "@/components/ui/switch";
+
 import { DarkModeSwitch } from "../DarkModeStuff";
 
 export const ErrorDialogueContext = createContext<{
@@ -27,7 +25,7 @@ export const ErrorDialogueContext = createContext<{
 export const BurgerMenuContext = createContext(false);
 
 interface IDocumentsContext {
-  loadedDocuments: Document[];
+  loadedDocuments: any[];
   setLoadedDocuments: React.Dispatch<React.SetStateAction<Document[]>>;
 }
 

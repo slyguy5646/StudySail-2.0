@@ -13,7 +13,7 @@ import BurgerOptions from "./Burger";
 
 import NavAvatar from "@/components/NavAvatar";
 import { UserProfile, useUser } from "@clerk/nextjs";
-import { Document } from "@prisma/client";
+import {Document} from "@prisma/client"
 
 import {
   Dialog,
