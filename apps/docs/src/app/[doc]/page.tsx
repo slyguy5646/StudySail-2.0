@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata | unde
 
   const {
     title,
-    date: publishedTime,
 
     slug,
   } = post;
@@ -37,7 +36,6 @@ export async function generateMetadata({ params }: any): Promise<Metadata | unde
       title,
 
       type: "article",
-      publishedTime,
       url: `https://docs.studysail.com/${slug}`,
     },
   };
