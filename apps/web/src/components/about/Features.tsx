@@ -21,7 +21,8 @@ const features = [
     name: "File Processing",
     description: (
       <div>
-        Bring the study material you already have, we'll handle the rest. <LearnMore href="" />
+        Bring the study material you already have, we'll handle the rest.{" "}
+        <LearnMore href="https://docs.studysail.com/file-storage" />
       </div>
     ),
     icon: DocumentTextIcon,
@@ -32,7 +33,8 @@ const features = [
     name: "Flashcards",
     description: (
       <div>
-        Create flashcards from your study material for easy review. <LearnMore href="" />
+        Create flashcards from your study material for easy review.{" "}
+        <LearnMore href="https://docs.studysail.com/generating-flashcards" />
       </div>
     ),
     icon: SparklesIcon,
